@@ -1,0 +1,51 @@
+p {
+  letter-spacing: 16px;
+  line-height: 1.5;
+  word-spacing: 16px;
+  font-size: 14PX;
+}
+
+img {
+  width: 710px;
+  height: 105px;
+}
+
+#titulo {
+  text-align: center;
+  font-size: 15px;
+}
+
+#enunciado {
+  text-align: justify;
+  margin-top: 50px;
+}
+
+#constancia {
+  margin-top: 60px;
+  margin-bottom: 70px;
+}
+
+#estudiante {
+  margin-top: 5%;
+  line-height: 1.4;
+}
+
+#contador {
+  margin-top: 75px;
+  line-height: 1.4;
+}
+
+#header {
+  margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#footer {
+  margin-left: 66px;
+}
+
+.contenedor {
+  margin: 20px 80px;
+  margin-left: 100px;
+}

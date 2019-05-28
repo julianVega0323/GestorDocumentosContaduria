@@ -1,0 +1,61 @@
+table {
+    margin-left: 50px;
+    text-align: left;
+}
+
+table, td {
+    border-collapse: collapse;
+    border: 1px solid;
+    text-align: center
+}
+
+td {
+    font-size: 12px;
+    padding: 2px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+p {
+    text-align: justify;
+}
+
+#header {
+    width: 680px;
+    height: 100px;
+    margin-left: 55px;
+    margin-top: 20px;
+}
+
+#nota {
+    margin-left: 16px;
+    font-size: 13px;
+}
+
+#requisitos {
+    margin-left: 26px;
+    font-size: 13px;
+}
+
+.titulo-seccion {
+    font-size: 18px;
+}
+
+.seccion-firmas {
+    height: 30px;
+}
+
+.azul-claro {
+    background-color: rgb(241, 243, 244);
+    text-align: center;
+}
+
+.azul-oscuro {
+    background-color: #d9d9d9;
+    text-align: center;
+}
+
+.tipoTrabajo {
+    text-align: justify;
+    padding-left: 8px;
+}
