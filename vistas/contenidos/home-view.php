@@ -1,9 +1,25 @@
+<?php
+require_once './core/mainModel.php';
+$obj = new mainModel();
+$sql = "SELECT count(id) FROM convenio";
+$rta = mainModel::consulta($sql);
+$rtas = $rta->fetch();
+$sql2 = "SELECT count(id) FROM practica";
+$rta2 = mainModel::consulta($sql2);
+$rtas2 = $rta2->fetch();
+$sql3 = "SELECT count(id) FROM trabajo_grado";
+$rta3 = mainModel::consulta($sql3);
+$rtas3 = $rta3->fetch();
+$sql4 = "SELECT count(id) FROM convenio_arl";
+$rta4 = mainModel::consulta($sql4);
+$rtas4 = $rta4->fetch();
+?>
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a href="#">Dashboard</a>
   </li>
-  <li class="breadcrumb-item active">Overview</li>
+  <li class="breadcrumb-item active">Información</li>
 </ol>
 
 <!-- Icon Cards-->
@@ -14,14 +30,22 @@
         <div class="card-body-icon">
           <i class="fas fa-fw fa-comments"></i>
         </div>
-        <div class="mr-5">26 New Messages!</div>
+        <div class="mr-5"><?=$rtas[0]?> Convenios!</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
+      <form action="/GestorDocumentosContaduria/registros" method="post">
+        <button type="submit" name="q" value="Practicas" class="card-footer text-white clearfix small z-1" style="border:0;border-top: 1px solid rgba(0, 0, 0, 0.125); width: 100%;">
+        <span class="float-left">Ver Detalles</span>
+        <span class="float-right">
+          <i class="fas fa-angle-right"></i>
+        </span>
+        </button>
+      </form>
+      <!-- <a class="card-footer text-white clearfix small z-1" href="/GestorDocumentosContaduria/registros">
         <span class="float-left">View Details</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
         </span>
-      </a>
+      </a> -->
     </div>
   </div>
   <div class="col-xl-3 col-sm-6 mb-3">
@@ -30,14 +54,18 @@
         <div class="card-body-icon">
           <i class="fas fa-fw fa-list"></i>
         </div>
-        <div class="mr-5">11 New Tasks!</div>
+        <div class="mr-5"><?=$rtas2[0]?> Practicas!</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
-        <span class="float-left">View Details</span>
+      <form action="/GestorDocumentosContaduria/registros" method="post">
+        <button type="submit" name="q" value="Practicas" class="card-footer text-white clearfix small z-1" style="border:0;border-top: 1px solid rgba(0, 0, 0, 0.125); width: 100%;">
+        <span class="float-left">Ver Detalles</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
         </span>
-      </a>
+        </button>
+      </form>
+      <!-- <a class="card-footer text-white clearfix small z-1"  href="/GestorDocumentosContaduria/registros?q=practicas">
+      </a> -->
     </div>
   </div>
   <div class="col-xl-3 col-sm-6 mb-3">
@@ -46,14 +74,22 @@
         <div class="card-body-icon">
           <i class="fas fa-fw fa-shopping-cart"></i>
         </div>
-        <div class="mr-5">123 New Orders!</div>
+        <div class="mr-5"><?=$rtas3[0]?> Trabajos de Grado!</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
+      <form action="/GestorDocumentosContaduria/registros" method="post">
+        <button type="submit" name="q" value="Trabajos de Grado" class="card-footer text-white clearfix small z-1" style="border:0;border-top: 1px solid rgba(0, 0, 0, 0.125); width: 100%;">
+        <span class="float-left">Ver Detalles</span>
+        <span class="float-right">
+          <i class="fas fa-angle-right"></i>
+        </span>
+        </button>
+      </form>
+      <!-- <a class="card-footer text-white clearfix small z-1"  href="/GestorDocumentosContaduria/registros?q=grado">
         <span class="float-left">View Details</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
         </span>
-      </a>
+      </a> -->
     </div>
   </div>
   <div class="col-xl-3 col-sm-6 mb-3">
@@ -62,14 +98,22 @@
         <div class="card-body-icon">
           <i class="fas fa-fw fa-life-ring"></i>
         </div>
-        <div class="mr-5">13 New Tickets!</div>
+        <div class="mr-5"><?=$rtas4[0]?> Afiliaciones ARL!</div>
       </div>
-      <a class="card-footer text-white clearfix small z-1" href="#">
+      <form action="/GestorDocumentosContaduria/registros" method="post">
+        <button type="submit" name="q" value="Afiliaciones a Riesgos Laborales" class="card-footer text-white clearfix small z-1" style="border:0;border-top: 1px solid rgba(0, 0, 0, 0.125); width: 100%;">
+        <span class="float-left">Ver Detalles</span>
+        <span class="float-right">
+          <i class="fas fa-angle-right"></i>
+        </span>
+        </button>
+      </form>
+      <!-- <a class="card-footer text-white clearfix small z-1"  href="/GestorDocumentosContaduria/registros?q=arl">
         <span class="float-left">View Details</span>
         <span class="float-right">
           <i class="fas fa-angle-right"></i>
         </span>
-      </a>
+      </a> -->
     </div>
   </div>
 </div>

@@ -89,13 +89,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="sr-only" for="f1-first-name-student">Primer Nombre</label>
-                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-first-name" placeholder="Primer Nombre" class="f1-first-name form-control" required value="Thalia">
+                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-first-name" placeholder="Primer Nombre" class="f1-first-name form-control" required value="yeison">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="sr-only" for="f1-first-name">Segundo Nombre</label>
-                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-second-name" placeholder="Segundo Nombre" class="f1-first-name form-control" required value="Yessenia">
+                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-second-name" placeholder="Segundo Nombre" class="f1-first-name form-control" required value="david">
                                     </div>
                                 </div>
                             </div>
@@ -103,13 +103,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="sr-only" for="f1-first-name">Primer Apellido</label>
-                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-surname" placeholder="Primer Apellido" class="f1-first-name form-control" required value="Becerra">
+                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-surname" placeholder="Primer Apellido" class="f1-first-name form-control" required value="cordoba">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="sr-only" for="f1-first-name">Segundo Apellido</label>
-                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-second-surname" placeholder="Segundo Apellido" class="f1-first-name form-control" required value="Vega">
+                                        <input type="text" onkeypress="return soloLetras(event)" name="f1-second-surname" placeholder="Segundo Apellido" class="f1-first-name form-control" required value="castellanos">
                                     </div>
                                 </div>
                             </div>
@@ -143,10 +143,10 @@
                                     <div class="form-group">
                                         <label for="inputEmail4">Género</label><br>
                                         <input type="radio" name="f1-genero" id="inlineRadio1" class="custom-control-input" value="M" style="margin-left:14px" required>
-                                        <label class="radio-inline custom-control-label" style="padding:2px"> Hombre </label>
+                                        <label class="radio-inline custom-control-label" style="padding:2px"> Masculino </label>
 
                                         <input type="radio" name="f1-genero" id="inlineRadio2" class="custom-control-input" value="F" style="margin-left:30px" required>
-                                        <label class="radio-inline custom-control-label" style="padding:2px"> Mujer</label>
+                                        <label class="radio-inline custom-control-label" style="padding:2px"> Femenino</label>
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="sr-only" for="f1-first-name">Correo</label>
-                                        <input type="email" name="f1-correo-estudiante" placeholder="Correo" class="f1-email form-control" id="f1-first-name" required value="Thaliabv@ufps.edu.co">
+                                        <input type="email" name="f1-correo-estudiante" placeholder="Correo" class="f1-email form-control" id="f1-first-name" required value="yeisonc@ufps.edu.co">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -536,10 +536,10 @@
                                     <div class="form-group">
                                         <label for="inputEmail4">Género</label><br>
                                         <input type="radio" name="f2-genero" id="inlineRadio3" class="custom-control-input" value="M" style="margin-left:14px">
-                                        <label class="radio-inline custom-control-label" style="padding:2px"> Hombre </label>
+                                        <label class="radio-inline custom-control-label" style="padding:2px"> Masculino </label>
 
                                         <input type="radio" name="f2-genero" id="inlineRadio4" class="custom-control-input" value="F" style="margin-left:30px">
-                                        <label class="radio-inline custom-control-label" style="padding:2px"> Mujer</label>
+                                        <label class="radio-inline custom-control-label" style="padding:2px"> Femenino</label>
                                     </div>
                                 </div>
 

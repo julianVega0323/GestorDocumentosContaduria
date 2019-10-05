@@ -6,37 +6,42 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/carpeta_union/registros">
+    <a class="nav-link" href="/GestorDocumentosContaduria/estadisticas">
       <i class="fas fa-fw fa-table"></i>
-      <span>Registros</span></a>
+      <span>Gestión de Cuentas</span></a>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-fw fa-folder"></i>
-      <span>Filtro</span>
+      <span>Consultas</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
       <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
-      <a class="dropdown-item" href="index.html">Trabajos de Grado</a>
-      <a class="dropdown-item" href="index.html">Practicas</a>
-      <a class="dropdown-item" href="index.html">Afiliaciones</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="index.html">Docente</a>
+      <a class="dropdown-item" href="index.html">Docentes</a>
+      <a class="dropdown-item" href="index.html">Asignaturas</a>
+      <a class="dropdown-item" href="index.html">Empresas</a>
+      <!-- <div class="dropdown-divider"></div> -->
+      <!-- <a class="dropdown-item" href="index.html">Docente</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="index.html">Empresa</a>
-      <!-- <h6 class="dropdown-header">Other Pages:</h6>
+      <h6 class="dropdown-header">Other Pages:</h6>
           <a class="dropdown-item" href="404.html">404 Page</a>
           <a class="dropdown-item" href="blank.html">Blank Page</a> -->
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="reportes.html">
+    <a class="nav-link" href="/GestorDocumentosContaduria/reportes">
       <i class="fas fa-fw fa-table"></i>
       <span>Reportes</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="estadisticas.html">
+    <a class="nav-link" href="/GestorDocumentosContaduria/estadisticas">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Estadisticas</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/GestorDocumentosContaduria/estadisticas">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Seguimiento</span></a>
   </li>
 </ul>

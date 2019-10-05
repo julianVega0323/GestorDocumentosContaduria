@@ -35,7 +35,7 @@
                                     </div>
 
                                     <div class="form-label-group">
-                                        <input type="password" autocomplete="false" name="clave" class="form-control" placeholder="Password" required autofocus>
+                                        <input type="password" autocomplete="false" id="inputPassword" name="clave" class="form-control" placeholder="Password" required autofocus>
                                         <label for="inputPassword">Contraseña</label>
                                     </div>
 

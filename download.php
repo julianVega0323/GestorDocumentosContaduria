@@ -149,27 +149,64 @@
                                     }
                                 }
 
+
+                                /////////////////////////////////////////////////////////////////////////
+                                $consulta = "INSERT INTO 
+                                    `estudiante` (
+                                        `id`, `codigo`, `identificacion`, `tipo_identificacion`, `p_nombre`, `s_nombre`, 
+                                        `p_apellido`, `s_apellido`, `genero`, `fecha_nacimiento`, `fecha_expedicion`, `dpto_nacimiento`, 
+                                        `ciudad_nacimiento`, `semestre_actual`, `direccion`, `correo`, `telf_fijo`, `telf_movil`, `eps-ars`
+                                        ) VALUES 
+                                        (NULL, '$codigo', '$documento', '$tipoID', '$nombre', '$snombre', 
+                                        '$apellido', '$sapellido', '$genero', '$fecha_nacim', '$expedicionID', '$departamento_nacim', 
+                                        '$ciudad_nacim', '$semestre', '$direccion_estud', '$correo_estud', '$fijo_estud', '$celular_estud', 'coomeva')";
+
+                                $idEstudiante =  $obj->consultaSimple($consulta);
+
+                                $consulta2 = "INSERT INTO 
+                                    `representante_legal` (
+                                        `id`, `nombre`, `apellido`, `identificacion`, `lugar_expedicion`
+                                        ) VALUES 
+                                        (NULL, '$nom_repreLegal', '$apell_repreLegal', '$cc_rLegal', '$lugar_expedicion_rLegal')";
+
+
+                                $idRepresentanteLegal =  $obj->consultaSimple($consulta2);
+
+                                $consulta3 = "INSERT INTO 
+                                    `empresa` (
+                                        `id`, `nit`, `nombre`, `correo`, `telefono`, `direccion`, 
+                                        `representante_legal`
+                                        ) VALUES 
+                                        (NULL, '$nit', '$empresa', '$empresa_email', '$empresa_telf', '$empresa_direccion', 
+                                        '$idRepresentanteLegal')";
+
+                                $idEmpresa =  $obj->consultaSimple($consulta3);
+
+                                $consulta4 = "INSERT INTO 
+                                    `supervisor` (
+                                        `id`, `nombre`, `apellido`, `identificacion`, `lugar_expedicion`, `cargo`) VALUES 
+                                        (NULL, '$nom_supervisor', '$apell_supervisor', '$cc_supervisor', '$lugar_expedicion_supervisor', '$cargo_supervisor')";
+
+                                $idSupervisor =  $obj->consultaSimple($consulta4);
+
+                                $consulta5 = "INSERT INTO 
+                                    `convenio` (
+                                        `id`, `estudiante`, `empresa`, `supervisor`, `fecha_convenio`) VALUES 
+                                        (NULL, '$idEstudiante', '$idEmpresa', '$idSupervisor', '$fechaActual')";
+
+                                $idConvenio =  $obj->consultaSimple($consulta5);
+                                ////////////////////////////////////////////////////////////////////////////////////////////
+
                                 // f1-tipoConvenio: (T) -> Trabajo Grado / (P) -> Practicas
                                 if ($_POST['f1-tipoConvenio'] == "T") {
-                                    $consulta = "INSERT INTO 
-                                    trabajoGrado 
-                                    (
-                                    pNomEstudiante,sNomEstudiante,pApeEstudiante,sApeEstudiante,
-                                    tipoIdEstudiante,idEstudiante,fechaExpEstudiante,lugarExpEstudiante,
-                                    lugarNacEstudiante,generoEstudiante,codigoEstudiante,telfEstudiante,
-                                    emailEstudiante,nitEmpresa,nomEmpresa,emailEmpresa,direcEmpresa,
-                                    telfEmpresa,nomRepreLegal,apeRepreLegal,ccRepreLegal,lugarExpRepreLegal,
-                                    nomSupervisor,apeSupervisor,ccSupervisor,lugarExpSupervisor,cargoSupervisor,tipoGrado,
-                                    semestre,fecha_solicitud
-                                    )
-                                    VALUES ('$nombre','$snombre','$apellido','$sapellido','$tipoID','$documento','$expedicionID',
-                                    'No Definida','$ciudad_nacim','$genero','$codigo','$celular_estud','$correo_estud','$nit',
-                                    '$empresa','$empresa_email','$empresa_direccion','$empresa_telf','$nom_repreLegal','$apell_repreLegal',
-                                    '$cc_rLegal','$lugar_expedicion_rLegal','$nom_supervisor','$apell_supervisor','$cc_supervisor',
-                                    '$lugar_expedicion_supervisor','$cargo_supervisor','$tipoGrado','$semestre','$fechaActual')";
 
-                                    $obj->consultaSimple($consulta);
-                                     
+                                    $consulta6 = "INSERT INTO 
+                                    `trabajo_grado` (
+                                        `id`, `convenio`, `tipo`) VALUES 
+                                        (NULL, '$idConvenio', '$tipoGrado')";
+
+                                    $idTrabajoGrado =  $obj->consultaSimple($consulta6);
+
                                     ?>
                                     <div class="col-md-<?= $noConvenio ?>">
                                         <img src="assets/ico/pdf.png" alt="" width="80px">
@@ -192,32 +229,34 @@
                                         </form>
                                     </div>
                                 <?php } elseif ($_POST['f1-tipoConvenio'] == "P") {
-                                    $consulta = "INSERT INTO 
-                                    practicas 
-                                    (
-                                    pNomEstudiante,sNomEstudiante,pApeEstudiante,sApeEstudiante,
-                                    tipoIdEstudiante,idEstudiante,fechaExpEstudiante,lugarExpEstudiante,
-                                    lugarNacEstudiante,generoEstudiante,codigoEstudiante,telfEstudiante,
-                                    emailEstudiante,nitEmpresa,nomEmpresa,emailEmpresa,direcEmpresa,
-                                    telfEmpresa,nomRepreLegal,apeRepreLegal,ccRepreLegal,lugarExpRepreLegal,
-                                    nomSupervisor,apeSupervisor,ccSupervisor,lugarExpSupervisor,cargoSupervisor,
-                                    nomAsignatura,docenteAsignatura,emailDocenteAsigna,jornadaAsignatura,
-                                    grupoAsignatura,areaDesignada,tematicaDesarrollar,horarioAsistencia,
-                                    semestre,fecha_solicitud
-                                    )
-                                    VALUES (
-                                    '$nombre','$snombre','$apellido','$sapellido',
-                                    '$tipoID','$documento','$expedicionID','No Definida',
-                                    '$ciudad_nacim','$genero','$codigo','$celular_estud',
-                                    '$correo_estud','$nit','$empresa','$empresa_email','$empresa_direccion',
-                                    '$empresa_telf','$nom_repreLegal','$apell_repreLegal','$cc_rLegal','$lugar_expedicion_rLegal',
-                                    '$nom_supervisor','$apell_supervisor','$cc_supervisor','$lugar_expedicion_supervisor','$cargo_supervisor',
-                                    '$materia','$profesor','$email_profe','$jornada',
-                                    '$grupo','$area','$tematica','$horario_asistencia',
-                                    '$semestre','$fechaActual')";
+                                        $consulta6 = "INSERT INTO 
+                                    `asignatura` (
+                                        `id`, `nombre`, `codigo`, `jornada`, `grupo`) VALUES 
+                                        (NULL, '$materia', '0000000', '$jornada', '$grupo')";
 
-                                $obj->consultaSimple($consulta);
-                                ?>
+                                        $idAsignatura =  $obj->consultaSimple($consulta6);
+
+                                        $consulta7 = "INSERT INTO 
+                                    `docente` (
+                                        `id`, `nombre`, `email`, `codigo`) VALUES 
+                                        (NULL, '$profesor', '$email_profe', '0000000')";
+
+                                        $idDocente =  $obj->consultaSimple($consulta7);
+
+
+                                        $consulta8 = "INSERT INTO 
+                                    `asigna-docente` (
+                                        `docente`, `asignatura`) VALUES 
+                                        ('$idDocente', '$idAsignatura')";
+
+                                        $idAsignaDocente =  $obj->consultaSimple($consulta8);
+
+                                        $consulta9 = "INSERT INTO 
+                                    `practica` (`asignatura`, `convenio`,`area_designada`, `tematica-desarrollar`, `horario-asistencia`) VALUES 
+                                        ('$idAsignatura', '$idConvenio','$area', '$tematica', '$horario_asistencia')";
+
+                                        $idPractica =  $obj->consultaSimple($consulta9);
+                                        ?>
 
                                     <div class="col-md-<?= $noConvenio ?>">
                                         <img src="assets/ico/pdf.png" alt="" width="80px">
@@ -249,7 +288,7 @@
                                         </form>
                                     </div>
                                 <?php }
-                            if ($noConvenio != "6") { ?>
+                                    if ($noConvenio != "6") { ?>
                                     <div class="col-md-4">
                                         <img src="assets/ico/pdf.png" alt="" width="80px">
                                         <h4>𝐶𝑜𝑛𝑣𝑒𝑛𝑖𝑜 𝑈𝑛𝑖𝑣𝑒𝑟𝑠𝑖𝑑𝑎𝑑 - 𝐸𝑚𝑝𝑟𝑒𝑠𝑎</h4>
@@ -314,54 +353,80 @@
                                     <hr>
                                 </div>
 
-                            <?php
-                            // CREAR AFILIACION A RIESGOS LABORALES
-                        } elseif (isset($_POST['crear-arl'])) {
+                                <?php
+                                    // CREAR AFILIACION A RIESGOS LABORALES
+                                } elseif (isset($_POST['crear-arl'])) {
 
-                            if (isset($_POST['f2-p-nombre'], $_POST['f2-s-nombre'], $_POST['f2-p-apellido'], $_POST['f2-s-nombre'], $_POST['f2-codigo'], $_POST['f2-cc'],
-                            $_POST['f2-expedicion-cc'], $_POST['f2-genero'], $_POST['f2-fecha-nacimiento'], $_POST['f2-dep-nacimiento'], $_POST['f2-ciudad-nacimiento'],
-                            $_POST['f2-correo'], $_POST['f2-direccion'], $_POST['f2-telefono'], $_POST['f2-eps'], $_POST['f2-tipo-Tgrado'], $_POST['f2-asignatura'],
-                            $_POST['f2-docente'], $_POST['f2-email-docente'], $_POST['f2-jornada'], $_POST['f2-grupo'], $_POST['f2-tipo-id'], $_POST['f2-tipoConvenio'],
-                            $_POST['f2-telefono-fijo'], $_POST['f2-semestre'])) {
-                                $p_nombre = strtoupper($_POST['f2-p-nombre']);
-                                $s_nombre = strtoupper($_POST['f2-s-nombre']);
-                                $p_apellido = strtoupper($_POST['f2-p-apellido']);
-                                $s_apellido = strtoupper($_POST['f2-s-apellido']);
-                                $codigo = strtoupper($_POST['f2-codigo']);
-                                $cc = strtoupper($_POST['f2-cc']);
-                                $cc_expedicion = strtoupper($_POST['f2-expedicion-cc']);
-                                $genero = strtoupper($_POST['f2-genero']);
-                                $fecha_nacim = strtoupper($_POST['f2-fecha-nacimiento']);
-                                $departamento_nacim = strtoupper($_POST['f2-dep-nacimiento']);
-                                $ciudad_nacim = strtoupper($_POST['f2-ciudad-nacimiento']);
-                                $correo = strtoupper($_POST['f2-correo']);
-                                $direccion = strtoupper($_POST['f2-direccion']);
-                                $telefono = $_POST['f2-telefono'];
-                                $eps = strtoupper($_POST['f2-eps']);
-                                $tipo_grado = strtoupper($_POST['f2-tipo-Tgrado']);
-                                $asignatura = strtoupper($_POST['f2-asignatura']);
-                                $docente =strtoupper( $_POST['f2-docente']);
-                                $email_docente = strtoupper($_POST['f2-email-docente']);
-                                $jornada = strtoupper($_POST['f2-jornada']);
-                                $grupo = strtoupper($_POST['f2-grupo']);
-                                $tipoID = strtoupper($_POST['f2-tipo-id']);
-                                if(strtoupper($_POST['f2-tipoConvenio'])=="T"){
-                                    $tipoConvenio = "TRABAJO DE GRADO";
-                                }else if(strtoupper($_POST['f2-tipoConvenio'])=="P"){
-                                    $tipoConvenio = "PRACTICAS";
-                                }
-                                $telefonoFijo = strtoupper($_POST['f2-telefono-fijo']);
-                                $semestre = $_POST['f2-semestre'];
+                                    if (isset($_POST['f2-p-nombre'], $_POST['f2-s-nombre'], $_POST['f2-p-apellido'], $_POST['f2-s-nombre'], $_POST['f2-codigo'], $_POST['f2-cc'],
+                                    $_POST['f2-expedicion-cc'], $_POST['f2-genero'], $_POST['f2-fecha-nacimiento'], $_POST['f2-dep-nacimiento'], $_POST['f2-ciudad-nacimiento'],
+                                    $_POST['f2-correo'], $_POST['f2-direccion'], $_POST['f2-telefono'], $_POST['f2-eps'], $_POST['f2-tipo-Tgrado'], $_POST['f2-asignatura'],
+                                    $_POST['f2-docente'], $_POST['f2-email-docente'], $_POST['f2-jornada'], $_POST['f2-grupo'], $_POST['f2-tipo-id'], $_POST['f2-tipoConvenio'],
+                                    $_POST['f2-telefono-fijo'], $_POST['f2-semestre'])) {
+                                        $p_nombre = strtoupper($_POST['f2-p-nombre']);
+                                        $s_nombre = strtoupper($_POST['f2-s-nombre']);
+                                        $p_apellido = strtoupper($_POST['f2-p-apellido']);
+                                        $s_apellido = strtoupper($_POST['f2-s-apellido']);
+                                        $codigo = strtoupper($_POST['f2-codigo']);
+                                        $cc = strtoupper($_POST['f2-cc']);
+                                        $cc_expedicion = strtoupper($_POST['f2-expedicion-cc']);
+                                        $genero = strtoupper($_POST['f2-genero']);
+                                        $fecha_nacim = strtoupper($_POST['f2-fecha-nacimiento']);
+                                        $departamento_nacim = strtoupper($_POST['f2-dep-nacimiento']);
+                                        $ciudad_nacim = strtoupper($_POST['f2-ciudad-nacimiento']);
+                                        $correo = strtoupper($_POST['f2-correo']);
+                                        $direccion = strtoupper($_POST['f2-direccion']);
+                                        $telefono = $_POST['f2-telefono'];
+                                        $eps = strtoupper($_POST['f2-eps']);
+                                        $tipo_grado = strtoupper($_POST['f2-tipo-Tgrado']);
+                                        $asignatura = strtoupper($_POST['f2-asignatura']);
+                                        $docente = strtoupper($_POST['f2-docente']);
+                                        $email_docente = strtoupper($_POST['f2-email-docente']);
+                                        $jornada = strtoupper($_POST['f2-jornada']);
+                                        $grupo = strtoupper($_POST['f2-grupo']);
+                                        $tipoID = strtoupper($_POST['f2-tipo-id']);
+                                        $telefonoFijo = strtoupper($_POST['f2-telefono-fijo']);
+                                        $semestre = $_POST['f2-semestre'];
 
-                                    $consulta = "INSERT INTO `afiliado-arl` (`pNomEstudiante`, `sNomEstudiante`, `pApeEstudiante`, 
-                                    `sApeEstudiante`, `tipoIdEstudiante`, `idEstudiante`, `fechaExpEstudiante`, `lugarExpEstudiante`,
-                                     `lugarNacEstudiante`, `generoEstudiante`, `codigoEstudiante`, `telfEstudiante`, `emailEstudiante`,
-                                      `tipoConvenio`, `semestre`, `fecha_solicitud`) VALUES ('$p_nombre', '$s_nombre', '$p_apellido', '$s_apellido', '$tipoID',
-                                       '$cc', '$cc_expedicion', 'No Definido', '$ciudad_nacim', '$genero', '$codigo', '$telefono', '$correo', 
-                                       '$tipoConvenio', '$semestre', '$fechaActual')";
-                                     $obj->consultaSimple($consulta);
+                                        $consulta = "INSERT INTO 
+                                        `estudiante` (
+                                        `id`, `codigo`, `identificacion`, `tipo_identificacion`, `p_nombre`, `s_nombre`, 
+                                        `p_apellido`, `s_apellido`, `genero`, `fecha_nacimiento`, `fecha_expedicion`, `dpto_nacimiento`, 
+                                        `ciudad_nacimiento`, `semestre_actual`, `direccion`, `correo`, `telf_fijo`, `telf_movil`, `eps-ars`
+                                        ) VALUES 
+                                        (NULL, '$codigo', '$cc', '$tipoID', '$p_nombre', '$s_nombre', 
+                                        '$p_apellido', '$s_apellido', '$genero', '$fecha_nacim', '$cc_expedicion', '$departamento_nacim', 
+                                        '$ciudad_nacim', '$semestre', '$direccion', '$correo', '$telefonoFijo', '$telefono', '$eps')";
 
-                                ?>
+                                        $idEstudiante =  $obj->consultaSimple($consulta);
+
+
+                                        $consulta2 = "INSERT INTO 
+                                        `convenio_arl` (
+                                        `id`, `estudiante`, `fechaConvenio`) VALUES 
+                                        (NULL, '$idEstudiante', '$fechaActual')";
+
+                                        $idConvenio =  $obj->consultaSimple($consulta2);
+
+                                        if (strtoupper($_POST['f2-tipoConvenio']) == "T") {
+                                            $tipoConvenio = "TRABAJO DE GRADO";
+                                            $consulta = "INSERT INTO 
+                                        `trabajo_grado_arl` (
+                                        `id`, `tipo`, `convenio_arl`) VALUES 
+                                        (NULL, '$tipo_grado', '$idConvenio')";
+
+                                        $ids =  $obj->consultaSimple($consulta);
+
+                                        } else if (strtoupper($_POST['f2-tipoConvenio']) == "P") {
+                                            $tipoConvenio = "PRACTICAS";
+                                            $consulta = "INSERT INTO 
+                                        `practica_arl` (
+                                        `id`, `nombre_asignatura`, `docente`,`email_docente`, `jornada_asignatura`,`grupo_asignatura`,`convenio_arl`) VALUES 
+                                        (NULL, '$asignatura', '$docente', '$email_docente', '$jornada', '$grupo', '$idConvenio')";
+
+                                        $ids =  $obj->consultaSimple($consulta);
+                                        }
+
+                                        ?>
                                     <div class="col-md-12">
                                         <img src="assets/ico/pdf.png" alt="" width="80px">
                                         <h4>Formato Afiliación a Riesgos Laborales</h4>
@@ -394,12 +459,12 @@
                                             <button type="submit" class="btn btn-warning" name="Descargar_Afiliacion" data-toggle="tooltip" title="Recuerda Guardar una Copia de Este Documento!" style="margin-top:10px" download>Descargar <span class="glyphicon glyphicon-save"></span></span></button>
                                         </form>
                                     </div>
-                                <?php
+                            <?php
+                                }
+                            } else {
+                                header('Location: index');
                             }
-                        } else {
-                            header('Location: index');
-                        }
-                        ?>
+                            ?>
                         </div>
                     </div>
 

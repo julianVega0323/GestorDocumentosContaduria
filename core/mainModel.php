@@ -12,6 +12,14 @@ class mainModel
 
   public function consultaSimple($consulta)
   {
+    $e = self::conectar();
+    $rta = $e->prepare($consulta);
+    $rta->execute();
+    return $e->lastInsertId();
+  }
+  
+  public function consulta($consulta)
+  {
     $rta = self::conectar()->prepare($consulta);
     $rta->execute();
     return $rta;
@@ -32,4 +40,7 @@ class mainModel
     }
     return $alerta;
   }
+
+
+  
 }

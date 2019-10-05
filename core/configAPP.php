@@ -1,6 +1,6 @@
 <?php
 const SERVER = "localhost";
-const DB = "gestor_contaduria";
+const DB = "contaduria2019";
 const USER = "root";
 const PASS = "";
 
